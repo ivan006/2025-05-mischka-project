@@ -7,6 +7,9 @@ import User from 'src/models/User'
 import Session from 'src/models/Session'
 import RouteLineage  from "src/models/RouteLineage";
 
+import Brand from "src/models/orm-api/Brand";
+
+
 
 // Initialize the database
 const database = new VuexORM.Database()
@@ -18,6 +21,7 @@ database.register(User)
 database.register(Session)
 database.register(RouteLineage)
 
+database.register(Brand);
 
 
 // Create Vuex store
