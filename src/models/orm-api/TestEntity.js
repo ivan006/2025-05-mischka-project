@@ -70,9 +70,10 @@ export default class TestEntity extends Model {
 
 
       // Wrap the actual Airtable URL inside the proxy URL
-      const airtableUrl = `${url}?limit=10&offset=0`;
+      // const airtableUrl = `${url}?limit=10&offset=0`;
       // computedUrl = `https://capetownlists.co.za/?url=${encodeURIComponent(airtableUrl)}`;
-      computedUrl = `https://capetownlists.co.za/?url=${airtableUrl}`;
+      computedUrl = `https://capetownlists.co.za/?url=${url}`;
+      // computedUrl = `${url}`;
 
       // preparedRels = Helpers.prepareRelationsForAirtable(relationships);
       // filtersObj = Helpers.prepareFiltersForAirtable(options.filters);
