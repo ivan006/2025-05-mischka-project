@@ -11,7 +11,7 @@ export default class Brand extends MyBaseModel {
         name: '/lists/brands/:rId/:rName',
         params: {
           rId: pVal,
-          rName: pVal,
+          rName: item.name,
         },
       })
     }
@@ -35,17 +35,23 @@ export default class Brand extends MyBaseModel {
 
     static fieldsMetadata = {
         'id': {},
-            'name': {},
-            'created_at': {},
-            'updated_at': {}
+        'name': {},
+        'name_2': {},
+        'desc': {},
+        'image': {
+          usageType: 'fileImageType'
+        },
+        'createdTime': {}
     };
 
     static fields() {
         return {
             'id': this.attr('').nullable(),
             'name': this.attr(''),
-            'created_at': this.attr('').nullable(),
-            'updated_at': this.attr('').nullable()
+            'name_2': this.attr(''),
+            'desc': this.attr(''),
+            'image': this.attr(''),
+            'createdTime': this.attr('').nullable()
         };
     }
 
@@ -61,6 +67,7 @@ export default class Brand extends MyBaseModel {
     }
 
     static FetchById(id, relationships = [], flags = {}, moreHeaders = {}) {
+
         return this.customSupabaseApiFetchById(
             `${this.baseUrl}${this.entityUrl}`,
             id,
