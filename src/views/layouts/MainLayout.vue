@@ -65,6 +65,10 @@ const linksList = computed(() => {
       title: 'Brands',
       route: '/lists/brands',
     },
+    {
+      title: 'TestEntity',
+      route: '/lists/TestEntity',
+    },
   ];
 
 

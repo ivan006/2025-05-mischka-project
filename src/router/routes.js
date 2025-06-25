@@ -56,7 +56,7 @@ const routes = [
             name: '/lists/brands',
             component: () => import('src/controllers/lists/brands/BrandListController.vue'),
             meta: {
-              breadcrumbName: 'Users',
+              breadcrumbName: 'Brands',
               breadcrumbParentName: '',
               requiresAuth: false,
             },
@@ -67,7 +67,27 @@ const routes = [
             component: () => import('src/controllers/lists/brands/BrandReadController.vue'),
             meta: {
               breadcrumbName: ':rName',
-              breadcrumbParentName: '/lists/users',
+              breadcrumbParentName: '/lists/brands',
+              requiresAuth: false,
+            },
+          },
+          {
+            path: '/lists/TestEntity',
+            name: '/lists/TestEntity',
+            component: () => import('src/controllers/lists/test-entity/TestEntityListController.vue'),
+            meta: {
+              breadcrumbName: 'TestEntity',
+              breadcrumbParentName: '',
+              requiresAuth: false,
+            },
+          },
+          {
+            path: '/lists/TestEntity/:rId/:rName',
+            name: '/lists/TestEntity/:rId/:rName',
+            component: () => import('src/controllers/lists/test-entity/TestEntityReadController.vue'),
+            meta: {
+              breadcrumbName: ':rName',
+              breadcrumbParentName: '/lists/brands',
               requiresAuth: false,
             },
           }
