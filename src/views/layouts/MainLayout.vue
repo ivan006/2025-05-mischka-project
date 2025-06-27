@@ -1,26 +1,8 @@
 <template>
   <MainLayoutHelper>
     <template v-slot:menu>
-      <template v-for="link in linksList" :key="link.title || link.groupTitle">
-        <template v-if="link.groupTitle">
-          <q-item-label header>{{ link.groupTitle }}</q-item-label>
+      <MenuItems />
 
-          <EssentialLink
-            v-for="sublink in link.links"
-            :key="sublink.title"
-            v-bind="sublink"
-            :active-route="activeRoute"
-            :indent="true"
-          />
-        </template>
-        <template v-else>
-          <EssentialLink
-            v-bind="link"
-            :active-route="activeRoute"
-            :indent="false"
-          />
-        </template>
-      </template>
     </template>
     <template v-slot:default>
       <q-page-container>
@@ -42,6 +24,7 @@ import EssentialLink from 'src/views/EssentialLink.vue';
 import MainLayoutHelper from "src/views/layouts/MainLayoutHelper.vue";
 import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 import VueCookies from "vue-cookies";
+import MenuItems from "src/views/layouts/MenuItems.vue";
 
 defineOptions({
   name: 'MainLayout'
@@ -58,62 +41,7 @@ const session = computed(() => {
   return VueCookies.get('VITE_AUTH');
 });
 
-const linksList = computed(() => {
 
-  const linksList = [
-    {
-      title: 'Brands',
-      route: '/lists/brands',
-    },
-    {
-      title: 'TestEntity',
-      route: '/lists/TestEntity',
-    },
-  ];
-
-
-  if (session.value){
-    const myAccount = `/lists/users/${session.value.user.id}/${session.value.user.name}`
-
-
-    linksList.push({
-      icon: 'person',
-      title: 'My Account',
-      route: myAccount,
-    })
-    linksList.push({
-      icon: 'logout',
-      title: 'Logout',
-      function: ()=>{
-        VueCookies.remove('VITE_AUTH');
-        window.location.href = '/';
-
-      },
-    })
-  } else {
-
-    linksList.push({
-      icon: 'person',
-      title: 'Login',
-      route: '/login',
-    })
-    linksList.push({
-      icon: 'edit',
-      title: 'Register',
-      route: '/register',
-    })
-  }
-
-  linksList.push({
-    // icon: 'event',
-    icon: 'info',
-    title: 'About',
-    route: '/about',
-  })
-
-  return linksList
-
-});
 
 
 

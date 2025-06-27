@@ -1,8 +1,8 @@
 import { Model } from '@vuex-orm/core'
 
-export default class TestEntity extends Model {
-    static entity = 'brand';
-    static entityUrl = '/Food';
+export default class Menu_Items extends Model {
+    static entity = 'Menu_Items';
+    static entityUrl = '/Menu_Items';
     static primaryKey = 'id';
 
     static baseUrl = import.meta.env.VITE_API_BACKEND_URL
@@ -10,10 +10,11 @@ export default class TestEntity extends Model {
     static fields() {
         return {
             'id': this.attr('').nullable(),
-            'name': this.attr(''),
-            'name_2': this.attr(''),
-            'desc': this.attr(''),
-            'image': this.attr(''),
+            'Label': this.attr(''),
+            'URL': this.attr(''),
+            'Order': this.attr(''),
+            'Open In New Tab?': this.attr(''),
+            'Belongs to Header': this.attr(''),
             'createdTime': this.attr('').nullable()
         };
     }
@@ -72,7 +73,7 @@ export default class TestEntity extends Model {
       // Wrap the actual Airtable URL inside the proxy URL
       // const airtableUrl = `${url}?limit=10&offset=0`;
       // computedUrl = `https://capetownlists.co.za/?url=${encodeURIComponent(airtableUrl)}`;
-      computedUrl = url;
+      // computedUrl = url;
       // computedUrl = `${url}`;
 
       // preparedRels = Helpers.prepareRelationsForAirtable(relationships);

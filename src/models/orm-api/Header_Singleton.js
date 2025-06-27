@@ -1,8 +1,8 @@
 import { Model } from '@vuex-orm/core'
 
-export default class TestEntity extends Model {
-    static entity = 'brand';
-    static entityUrl = '/Food';
+export default class Global_Settings_Singleton extends Model {
+    static entity = 'Global_Settings_Singleton';
+    static entityUrl = '/Global_Settings_Singleton';
     static primaryKey = 'id';
 
     static baseUrl = import.meta.env.VITE_API_BACKEND_URL
@@ -72,7 +72,7 @@ export default class TestEntity extends Model {
       // Wrap the actual Airtable URL inside the proxy URL
       // const airtableUrl = `${url}?limit=10&offset=0`;
       // computedUrl = `https://capetownlists.co.za/?url=${encodeURIComponent(airtableUrl)}`;
-      computedUrl = url;
+      // computedUrl = url;
       // computedUrl = `${url}`;
 
       // preparedRels = Helpers.prepareRelationsForAirtable(relationships);
