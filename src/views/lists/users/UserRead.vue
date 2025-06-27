@@ -1,25 +1,28 @@
 <template>
+  <div>
 
-            <SuperRecord
-                :model="superRecordModel"
-                :id="+$route.params.rId"
-                :displayMapField="true"
-                @initialLoadHappened="$emit('initialLoadHappened')"
-                :templateOverview="templateListGrid"
-                :allowedTabs="['overview']"
-            >
-            </SuperRecord>
+
+    <!--<SuperRecord-->
+    <!--  :model="superRecordModel"-->
+    <!--  :id="+$route.params.rId"-->
+    <!--  :displayMapField="true"-->
+    <!--  @initialLoadHappened="$emit('initialLoadHappened')"-->
+    <!--  :templateOverview="templateListGrid"-->
+    <!--  :allowedTabs="['overview']"-->
+    <!--&gt;-->
+    <!--</SuperRecord>-->
+  </div>
 </template>
 
 <script>
-import { SuperRecord } from 'wizweb-fe'
+// import { SuperRecord } from 'wizweb-fe'
 import User from 'src/models/User'
 import {computed} from "vue";
 import VueCookies from "vue-cookies";
 
 export default {
     name: 'User-read',
-    components: { SuperRecord },
+    // components: { SuperRecord },
     computed: {
         superRecordModel() {
             return User

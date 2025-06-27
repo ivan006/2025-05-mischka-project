@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import VuexORM from '@vuex-orm/core'
 
-import { DBCrudCacheSet } from 'wizweb-fe';
+// import { DBCrudCacheSet } from 'wizweb-fe';
 
 import User from 'src/models/User'
 import Session from 'src/models/Session'
@@ -15,7 +15,7 @@ import Brand from "src/models/orm-api/Brand";
 const database = new VuexORM.Database()
 
 // Register models
-database.register(DBCrudCacheSet);
+// database.register(DBCrudCacheSet);
 
 database.register(User)
 database.register(Session)

@@ -1,7 +1,8 @@
-import { DBBaseModel } from 'wizweb-fe'
+// import { DBBaseModel } from 'wizweb-fe'
 import VueCookies from "vue-cookies";
+import {Model} from "@vuex-orm/core";
 
-export default class DBEvent extends DBBaseModel {
+export default class MyBaseModel extends Model {
     static baseUrl = import.meta.env.VITE_API_BACKEND_URL
 
     static adapter = 'airtable'

@@ -1,30 +1,33 @@
 <template>
+  <div>
 
-  <SuperTable
-      :showMap="true"
-      :model="superTableModel"
-      @clickRow="openRecord"
-      :displayMapField="false"
-      :parentKeyValuePair="parentKeyValuePair"
-      :fetchFlags="fetchFlags"
-      :templateListGrid="templateListGrid"
-      :viewAs="{
-          show: [],
-          default: 'grid'
-        }"
-      :allowedFilters="[]"
-  />
+
+    <!--<SuperTable-->
+    <!--  :showMap="true"-->
+    <!--  :model="superTableModel"-->
+    <!--  @clickRow="openRecord"-->
+    <!--  :displayMapField="false"-->
+    <!--  :parentKeyValuePair="parentKeyValuePair"-->
+    <!--  :fetchFlags="fetchFlags"-->
+    <!--  :templateListGrid="templateListGrid"-->
+    <!--  :viewAs="{-->
+    <!--      show: [],-->
+    <!--      default: 'grid'-->
+    <!--    }"-->
+    <!--  :allowedFilters="[]"-->
+    <!--/>-->
+  </div>
 
 </template>
 
 <script>
-import { SuperTable } from 'wizweb-fe'
+// import { SuperTable } from 'wizweb-fe'
 import User from 'src/models/User'
 
 export default {
   name: 'User-list',
   components: {
-      SuperTable,
+      // SuperTable,
   },
 
   props: {
