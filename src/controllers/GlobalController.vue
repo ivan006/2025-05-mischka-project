@@ -35,22 +35,20 @@
 
     <!--<img v-if="item.fields" :src="`https://capetownlists.co.za/?url=${item.fields['Site Background Image'][0].url}`" alt="">-->
     <!--<img v-if="item.fields" :src="`${item.fields['Site Background Image'][0].url}`" alt="">-->
-    <div
-      class="container-md"
-    >
-      <div class="q-px-md">
-        <div class="q-pb-md">
 
-          <q-page-container>
-            <!--<pre>{{item}}</pre>-->
-            <div class="q-mt-md q-mb-md">
-              <!--<BreadcrumbsComp />-->
-              <router-view />
-            </div>
-          </q-page-container>
-        </div>
+
+
+    <q-page-container>
+      <!--<pre>{{item}}</pre>-->
+      <div class="q-mt-md ">
+        <!--<BreadcrumbsComp />-->
+        <router-view />
       </div>
-    </div>
+    </q-page-container>
+    <!--<div class="q-pb-md">-->
+    <!--</div>-->
+    <!--<div class="q-px-md">-->
+    <!--</div>-->
   </div>
 
 </template>
