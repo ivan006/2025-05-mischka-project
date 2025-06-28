@@ -2,7 +2,7 @@ import { Model } from '@vuex-orm/core'
 
 export default class TestEntity extends Model {
     static entity = 'TestEntity';
-    static entityUrl = '/Menu_Items';
+    static entityUrl = '/Header_Singleton';
     static primaryKey = 'id';
 
     static baseUrl = import.meta.env.VITE_API_BACKEND_URL

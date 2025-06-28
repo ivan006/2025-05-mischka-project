@@ -1,22 +1,22 @@
 import { Model } from '@vuex-orm/core'
 
-export default class Global_Settings_Singleton extends Model {
-    static entity = 'Global_Settings_Singleton';
-    static entityUrl = '/Global_Settings_Singleton';
-    static primaryKey = 'id';
+export default class Header_Singleton extends Model {
+  static entity = 'Header_Singleton';
+  static entityUrl = '/Header_Singleton';
+  static primaryKey = 'id';
 
-    static baseUrl = import.meta.env.VITE_API_BACKEND_URL
+  static baseUrl = import.meta.env.VITE_API_BACKEND_URL
 
-    static fields() {
-        return {
-            'id': this.attr('').nullable(),
-            'name': this.attr(''),
-            'name_2': this.attr(''),
-            'desc': this.attr(''),
-            'image': this.attr(''),
-            'createdTime': this.attr('').nullable()
-        };
-    }
+  static fields() {
+    return {
+      'id': this.attr('').nullable(),
+      'Id': this.attr('').nullable(),
+      'Header Background Color': this.attr(''),
+      'Logo Image': this.attr(''),
+      'Site Background Image': this.attr(''),
+      'createdTime': this.attr('').nullable()
+    };
+  }
 
   static mergeHeaders(headers) {
     const result = {
@@ -56,100 +56,102 @@ export default class Global_Settings_Singleton extends Model {
     return this.api()
   }
 
-    static FetchAll(relationships = [], flags = {}, moreHeaders = {}, options = { page: 1, limit: 15, filters: {}, clearPrimaryModelOnly: false }) {
+  static FetchAll(relationships = [], flags = {}, moreHeaders = {}, options = { page: 1, limit: 15, filters: {}, clearPrimaryModelOnly: false }) {
 
-      const url = `${this.baseUrl}${this.entityUrl}`
-      const headers = this.mergeHeaders(moreHeaders)
+    const url = `${this.baseUrl}${this.entityUrl}`
+    const headers = this.mergeHeaders(moreHeaders)
 
-      let offset = (options.page - 1) * options.limit
-      // todo: note - i hade to put the filters in line because urls can have duplicates keys and objects cans and i needed duplicates key support for the date range filter
+    let offset = (options.page - 1) * options.limit
+    // todo: note - i hade to put the filters in line because urls can have duplicates keys and objects cans and i needed duplicates key support for the date range filter
 
-      let computedUrl = url
-      let preparedRels = {}
-      let filtersObj = {}
+    let computedUrl = url
+    let preparedRels = {}
+    let filtersObj = {}
 
 
-      // Wrap the actual Airtable URL inside the proxy URL
-      // const airtableUrl = `${url}?limit=10&offset=0`;
-      // computedUrl = `https://capetownlists.co.za/?url=${encodeURIComponent(airtableUrl)}`;
-      // computedUrl = url;
-      // computedUrl = `${url}`;
+    // Wrap the actual Airtable URL inside the proxy URL
+    // const airtableUrl = `${url}?limit=10&offset=0`;
+    // computedUrl = `https://capetownlists.co.za/?url=${encodeURIComponent(airtableUrl)}`;
+    computedUrl = url;
+    // computedUrl = `${url}`;
 
-      // preparedRels = Helpers.prepareRelationsForAirtable(relationships);
-      // filtersObj = Helpers.prepareFiltersForAirtable(options.filters);
+    // preparedRels = Helpers.prepareRelationsForAirtable(relationships);
+    // filtersObj = Helpers.prepareFiltersForAirtable(options.filters);
 
-      const result = this.customApiBase(headers)
-        .get(computedUrl, {
-          persistBy: 'insertOrUpdate',
-          params: {
-            ...{
-              limit: options.limit,
-              offset: offset,
-            },
-            ...flags,
-            ...preparedRels,
-            ...filtersObj
+    const result = this.customApiBase(headers)
+      .get(computedUrl, {
+        persistBy: 'insertOrUpdate',
+        params: {
+          ...{
+            limit: options.limit,
+            offset: offset,
           },
-          dataTransformer: ({ data }) => {
-            if (options.clearPrimaryModelOnly) {
-              this.deleteAll()
-            }
-            const result = data
-            return result
-          },
-        })
-        // .then((res) => {
-        //   return res
-        // })
-        // .catch((error) => {
-        //   // CustonMixins.methods.logNetworkError(error)
-        //   // return error // < would this be needed maybe?
-        // })
+          ...flags,
+          ...preparedRels,
+          ...filtersObj
+        },
+        dataTransformer: ({ data }) => {
+          if (options.clearPrimaryModelOnly) {
+            this.deleteAll()
+          }
 
-      return result
-    }
+          const result = data.records.map(record => {
+            return {
+              id: record.id,
+              createdTime: record.createdTime,
+              ...record.fields
+            };
+          });
+          return result
+        },
+      })
+    // .then((res) => {
+    //   return res
+    // })
+    // .catch((error) => {
+    //   // CustonMixins.methods.logNetworkError(error)
+    //   // return error // < would this be needed maybe?
+    // })
 
-    static FetchById(id, relationships = [], flags = {}, moreHeaders = {}) {
+    return result
+  }
 
-        return this.customSupabaseApiFetchById(
-            `${this.baseUrl}${this.entityUrl}`,
-            id,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
+  static FetchById(id, relationships = [], flags = {}, moreHeaders = {}) {
 
-    static Store(entity, relationships = [], flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiStore(
-            `${this.baseUrl}${this.entityUrl}`,
-            entity,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
 
-    static Update(entity, relationships = [], flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiUpdate(
-            `${this.baseUrl}${this.entityUrl}`,
-            entity,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
 
-    static Delete(entityId, flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiDelete(
-            `${this.baseUrl}${this.entityUrl}`,
-            entityId,
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
+    const url = `${this.baseUrl}${this.entityUrl}`
+    const headers = this.mergeHeaders(moreHeaders)
+    let computedUrl = url
+    let preparedRels = {}
+
+
+    computedUrl = `${url}/${id}`;
+    preparedRels = {}; // likely still returns {}
+
+    return this.customApiBase(headers)
+      .get(computedUrl, {
+        params: {
+          ...preparedRels,
+        },
+        dataTransformer: ({ data }) => {
+          // const result = this.NormalizeRecursive(data)
+          const result = {
+            id: data.id,
+            createdTime: data.createdTime,
+            ...data.fields
+          };
+          return result
+        },
+      })
+    // .then((res) => {
+    //   return res
+    // })
+    // .catch((error) => {
+    //   // CustonMixins.methods.logNetworkError(error)
+    // })
+
+  }
+
+
 }

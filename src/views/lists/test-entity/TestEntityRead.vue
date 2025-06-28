@@ -17,14 +17,10 @@
 import TestEntity from 'src/models/orm-api/TestEntity'
 
 export default {
-    name: 'TestEntityRead',
-    // components: { SuperRecord },
+  name: 'TestEntityRead',
+  // components: { SuperRecord },
 
   props: {
-    fetchFlags: {
-      type: Object,
-      default: () => ({})
-    }
   },
   data(){
     return {

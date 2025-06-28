@@ -1,131 +1,96 @@
 <template>
-  <GlobalControllerHelper>
-    <template v-slot:menu>
-      <MenuItems />
-    </template>
+  <div>
+    <q-toolbar class="bg-primary text-white">
+      <div class="container-md row no-wrap items-center bg-primary text-white">
 
-    <template v-slot:default>
-      <q-page-container>
-        <div class="q-mb-md">
-          <BreadcrumbsComp />
+        <!--<q-btn flat round dense icon="menu" class="q-mr-sm" />-->
+        <q-avatar>
+          <!--<img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">-->
+          <q-icon name="school" size="lg" style="opacity: 50%" />
+        </q-avatar>
+
+        <q-toolbar-title>{{ siteTitle }}</q-toolbar-title>
+
+        <!--<q-btn flat round dense icon="whatshot" />-->
+        <MenuItems />
+      </div>
+
+    </q-toolbar>
+
+    <!--<img v-if="item.fields" :src="`https://capetownlists.co.za/?url=${item.fields['Site Background Image'][0].url}`" alt="">-->
+    <img v-if="item.fields" :src="`${item.fields['Site Background Image'][0].url}`" alt="">
+    <div class="container-md">
+      <div class="q-px-md">
+        <div class="q-pb-md">
+
+          <q-page-container>
+            <!--<pre>{{item}}</pre>-->
+            <div class="q-mb-md">
+              <BreadcrumbsComp />
+            </div>
+            <router-view />
+          </q-page-container>
         </div>
-        <router-view />
-      </q-page-container>
-    </template>
-  </GlobalControllerHelper>
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import GlobalControllerHelper from 'src/controllers/GlobalHelperController.vue';
 import BreadcrumbsComp from 'src/controllers/BreadcrumbsComp.vue';
 import VueCookies from 'vue-cookies';
 import MenuItems from 'src/controllers/MenuItems.vue';
 import Menu_Items from "src/models/orm-api/Menu_Items";
+import Header_Singleton from "src/models/orm-api/Header_Singleton";
 
 export default {
   name: 'GlobalController',
   components: {
-    GlobalControllerHelper,
     BreadcrumbsComp,
     MenuItems
   },
 
   data(){
     return {
-      activeRoute: this.$route.path,
-      items: [],
-      loading: false,
-      loadingError: false,
-      options: {
-        page: 1,
-        itemsPerPage: 10,
-        sortBy: [],
-        groupBy: [],
-      },
-      filterValsRef: {},
+      siteTitle: 'Lorum Ipsum',
+      loading: true,
+      item: {},
     }
   },
   computed: {
-    superTableModel() {
-      return Menu_Items
+
+    id() {
+      // return this.$route.params.rId
+      return 'reci1Y5KdKFBkz3T1'
     },
-    filterValsComp() {
-      const result = {
-        ...this.filterValsRef,
-      };
-      return result;
+    superTableModel() {
+      return Header_Singleton
     },
   },
   methods: {
-
-    isActive(route) {
-      return route === this.activeRoute;
-    },
-
-    clickRow(item) {
-
-      this.$router.push({
-        path: item.URL
-        // name: '/lists/brands/:rId/:rName',
-        // params: {
-        //   rId: pVal,
-        //   rName: item.name,
-        // },
-      })
-    },
-
-    async fetchData() {
-      try {
-
-        this.loading = true;
-        this.loadingError = false;
-        let rules = [];
-
-
-        let extraHeaderComputed = {};
-        let flagsComputed = {};
-
-        const response = await this.superTableModel.FetchAll(
-          // =========================
+    fetchData() {
+      this.loading = true
+      this.superTableModel
+        .FetchById(
+          this.id,
+          // this.relationships,
           [],
-          {
-            ...rules,
-            ...flagsComputed,
-            /// -----------------------
-            ...this.fetchFlags,
-          },
-          extraHeaderComputed,
-          {
-            page: this.options.page,
-            limit: this.options.itemsPerPage,
-            //============================
-            filters: this.filterValsComp,
-            clearPrimaryModelOnly: false,
-          },
-        );
-
-
-        this.items = response.response.data.records.map(record => {
-          return {
-            id: record.id,
-            createdTime: record.createdTime,
-            ...record.fields
-          };
+          { flags: {}, moreHeaders: {}, rels: [] }
+        )
+        .then((response) => {
+          this.item = response.response.data
+          this.loading = false
+        })
+        .catch(() => {
+          this.loading = false
         });
-
-
-        this.loading = false;
-
-      } catch (error) {
-        this.loading = false;
-        this.loadingError = true;
-      }
     },
   },
   mounted(){
     this.fetchData();
-  },
+  }
 };
 </script>
