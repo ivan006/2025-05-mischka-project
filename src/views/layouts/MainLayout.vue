@@ -20,7 +20,6 @@
 <script setup>
 import {computed, ref, watch} from 'vue';
 import { useRoute } from 'vue-router';
-import EssentialLink from 'src/views/EssentialLink.vue';
 import MainLayoutHelper from "src/views/layouts/MainLayoutHelper.vue";
 import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 import VueCookies from "vue-cookies";

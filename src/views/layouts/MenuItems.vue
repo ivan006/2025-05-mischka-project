@@ -42,14 +42,12 @@
 
 <script>
 import Menu_Items from 'src/models/orm-api/Menu_Items'
-import EssentialLink from "src/views/EssentialLink.vue";
 import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
 
 export default {
   name: 'MenuItems',
   components: {
-    // EssentialLink
   },
 
   props: {

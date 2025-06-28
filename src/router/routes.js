@@ -7,67 +7,25 @@ const routes = [
       {
         path: '/',
         component: () => import('src/views/layouts/MainLayout.vue'),
-        redirect: to => { return '/about' },
+        redirect: to => { return '/home' },
         children: [
           {
-            path: '/login',
-            name: '/login',
-            component: () => import('src/controllers/auth/SigninView.vue'),
-            meta: { requiresAuth: false }
-          },
-          {
-            path: '/register',
-            name: '/register',
-            component: () => import('src/controllers/auth/JoinView.vue'),
-            meta: { requiresAuth: false }
-          },
-          {
-            path: '/about',
-            name: '/about',
-            component: () => import('src/controllers/AboutController.vue'),
+            path: '/home',
+            name: '/home',
+            component: () => import('src/controllers/HomeController.vue'),
             meta: {
-              breadcrumbName: 'About',
+              breadcrumbName: 'Home',
               breadcrumbParentName: '',
               requiresAuth: false,
             },
           },
           {
-            path: '/lists/users',
-            name: '/lists/users',
-            component: () => import('src/controllers/lists/users/UserListController.vue'),
+            path: '/services',
+            name: '/services',
+            component: () => import('src/controllers/ServicesController.vue'),
             meta: {
-              breadcrumbName: 'Users',
+              breadcrumbName: 'Services',
               breadcrumbParentName: '',
-              requiresAuth: false,
-            },
-          },
-          {
-            path: '/lists/users/:rId/:rName',
-            name: '/lists/users/:rId/:rName',
-            component: () => import('src/controllers/lists/users/UserReadController.vue'),
-            meta: {
-              breadcrumbName: ':rName',
-              breadcrumbParentName: '/lists/users',
-              requiresAuth: false,
-            },
-          },
-          {
-            path: '/lists/brands',
-            name: '/lists/brands',
-            component: () => import('src/controllers/lists/brands/BrandListController.vue'),
-            meta: {
-              breadcrumbName: 'Brands',
-              breadcrumbParentName: '',
-              requiresAuth: false,
-            },
-          },
-          {
-            path: '/lists/brands/:rId/:rName',
-            name: '/lists/brands/:rId/:rName',
-            component: () => import('src/controllers/lists/brands/BrandReadController.vue'),
-            meta: {
-              breadcrumbName: ':rName',
-              breadcrumbParentName: '/lists/brands',
               requiresAuth: false,
             },
           },
