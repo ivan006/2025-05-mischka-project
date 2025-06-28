@@ -1,12 +1,12 @@
 const routes = [
   {
     path: '/',
-    component: () => import('src/views/layouts/EmptyLayout.vue'),
+    component: () => import('src/controllers/EmptyLayout.vue'),
     meta: { requiresAuth: false },
     children: [
       {
         path: '/',
-        component: () => import('src/views/layouts/MainLayout.vue'),
+        component: () => import('src/controllers/GlobalController.vue'),
         // redirect: to => { return '/home' },
         children: [
           {

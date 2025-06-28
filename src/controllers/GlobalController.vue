@@ -20,10 +20,10 @@
 <script setup>
 import {computed, ref, watch} from 'vue';
 import { useRoute } from 'vue-router';
-import MainLayoutHelper from "src/views/layouts/MainLayoutHelper.vue";
-import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
+import MainLayoutHelper from "src/controllers/GlobalHelperController.vue";
+import BreadcrumbsComp from "src/controllers/BreadcrumbsComp.vue";
 import VueCookies from "vue-cookies";
-import MenuItems from "src/views/layouts/MenuItems.vue";
+import MenuItems from "src/controllers/MenuItems.vue";
 
 defineOptions({
   name: 'MainLayout'
