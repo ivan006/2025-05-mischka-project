@@ -19,15 +19,15 @@
         tag="router-link"
         @click="clickRow(item)"
         :active-class="'q-item--highlighted'"
-        class="q-pl-lg"
-        :style="isActive(item.id) ? 'background-color: rgba(0, 31, 63, 0.1)' : ''"
+        class="q-pl-lg text-h5"
+        :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
       >
         <!--<q-item-section avatar v-if="props.icon" style="width: 20px;">-->
         <!--  <q-icon :name="props.icon" />-->
         <!--</q-item-section>-->
 
         <q-item-section>
-          <q-item-label :style="isActive ? 'font-weight: bold;': ''">
+          <q-item-label :style="isActive(item) ? 'font-weight: bold;': ''">
             <!--<template v-if="props.icon">-->
             <!--  <q-icon  :name="props.icon" size="sm" style="opacity: 50%" />-->
             <!--</template>-->
@@ -84,8 +84,8 @@ export default {
   },
   methods: {
 
-    isActive(route) {
-      return route === this.activeRoute;
+    isActive(item) {
+      return item.URL === this.activeRoute;
     },
 
     clickRow(item) {

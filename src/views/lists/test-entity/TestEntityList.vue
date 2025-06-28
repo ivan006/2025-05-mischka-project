@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import TestEntity from 'src/models/orm-api/TestEntity'
+import Home_Page_Singleton from 'src/models/orm-api/Home_Page_Singleton'
 
 export default {
     name: 'TestEntity-list',
@@ -83,7 +83,7 @@ export default {
   },
     computed: {
       superTableModel() {
-          return TestEntity
+          return Home_Page_Singleton
       },
       filterValsComp() {
         const result = {

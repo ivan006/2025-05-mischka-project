@@ -1,15 +1,28 @@
 <template>
-  <div>
-    <q-toolbar class="bg-primary text-white">
-      <div class="container-md row no-wrap items-center bg-primary text-white">
+  <div
+    :style="this.item.fields?.['Site Background Image'][0].url ? `background-image: url('https://capetownlists.co.za/?url=${this.item.fields?.['Site Background Image'][0].url}');` : ``"
+    style="
+    color: white;
+    min-height: 100vh;
+    background-color: rgb(70,70,70);
+    "
+  >
+    <q-toolbar style="height: 100%" class="q-py-md">
+      <div class="container-md row no-wrap items-center  text-white ">
 
         <!--<q-btn flat round dense icon="menu" class="q-mr-sm" />-->
-        <q-avatar>
-          <!--<img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">-->
-          <q-icon name="school" size="lg" style="opacity: 50%" />
-        </q-avatar>
+        <!--<q-avatar large>-->
+        <!--  <img :src="this.item.fields?.['Logo Image'][0].url">-->
+        <!--  &lt;!&ndash;<q-icon name="school" size="lg" style="opacity: 50%" />&ndash;&gt;-->
+        <!--</q-avatar>-->
 
-        <q-toolbar-title>{{ siteTitle }}</q-toolbar-title>
+        <img
+          :src="this.item.fields?.['Logo Image'][0].url"
+          style="height: 200px;"
+        >
+        <q-toolbar-title>
+          <!--{{ siteTitle }}-->
+        </q-toolbar-title>
 
         <!--<q-btn flat round dense icon="whatshot" />-->
         <MenuItems />
@@ -17,18 +30,23 @@
 
     </q-toolbar>
 
+
+
+
     <!--<img v-if="item.fields" :src="`https://capetownlists.co.za/?url=${item.fields['Site Background Image'][0].url}`" alt="">-->
-    <img v-if="item.fields" :src="`${item.fields['Site Background Image'][0].url}`" alt="">
-    <div class="container-md">
+    <!--<img v-if="item.fields" :src="`${item.fields['Site Background Image'][0].url}`" alt="">-->
+    <div
+      class="container-md"
+    >
       <div class="q-px-md">
         <div class="q-pb-md">
 
           <q-page-container>
             <!--<pre>{{item}}</pre>-->
-            <div class="q-mb-md">
-              <BreadcrumbsComp />
+            <div class="q-mt-md q-mb-md">
+              <!--<BreadcrumbsComp />-->
+              <router-view />
             </div>
-            <router-view />
           </q-page-container>
         </div>
       </div>
@@ -40,7 +58,7 @@
 <script>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import BreadcrumbsComp from 'src/controllers/BreadcrumbsComp.vue';
+// import BreadcrumbsComp from 'src/controllers/BreadcrumbsComp.vue';
 import VueCookies from 'vue-cookies';
 import MenuItems from 'src/controllers/MenuItems.vue';
 import Menu_Items from "src/models/orm-api/Menu_Items";
@@ -49,7 +67,7 @@ import Header_Singleton from "src/models/orm-api/Header_Singleton";
 export default {
   name: 'GlobalController',
   components: {
-    BreadcrumbsComp,
+    // BreadcrumbsComp,
     MenuItems
   },
 
@@ -68,6 +86,10 @@ export default {
     },
     superTableModel() {
       return Header_Singleton
+    },
+    bgUrl() {
+      const result = this.item.fields?.['Site Background Image'][0].url
+      return result
     },
   },
   methods: {
