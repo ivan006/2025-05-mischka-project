@@ -1,20 +1,21 @@
 import { Model } from '@vuex-orm/core'
 
 export default class TestEntity extends Model {
-    static entity = 'brand';
-    static entityUrl = '/Food';
+    static entity = 'TestEntity';
+    static entityUrl = '/Menu_Items';
     static primaryKey = 'id';
 
     static baseUrl = import.meta.env.VITE_API_BACKEND_URL
 
     static fields() {
         return {
-            'id': this.attr('').nullable(),
-            'name': this.attr(''),
-            'name_2': this.attr(''),
-            'desc': this.attr(''),
-            'image': this.attr(''),
-            'createdTime': this.attr('').nullable()
+          'id': this.attr('').nullable(),
+          'Label': this.attr(''),
+          'URL': this.attr(''),
+          'Order': this.attr(''),
+          'Open In New Tab?': this.attr(''),
+          'Belongs to Header': this.attr(''),
+          'createdTime': this.attr('').nullable()
         };
     }
 
@@ -94,7 +95,14 @@ export default class TestEntity extends Model {
             if (options.clearPrimaryModelOnly) {
               this.deleteAll()
             }
-            const result = data
+
+            const result = data.records.map(record => {
+              return {
+                id: record.id,
+                createdTime: record.createdTime,
+                ...record.fields
+              };
+            });
             return result
           },
         })
@@ -111,45 +119,40 @@ export default class TestEntity extends Model {
 
     static FetchById(id, relationships = [], flags = {}, moreHeaders = {}) {
 
-        return this.customSupabaseApiFetchById(
-            `${this.baseUrl}${this.entityUrl}`,
-            id,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
+
+
+      const url = `${this.baseUrl}${this.entityUrl}`
+      const headers = this.mergeHeaders(moreHeaders)
+      let computedUrl = url
+      let preparedRels = {}
+
+
+      computedUrl = `${url}/${id}`;
+      preparedRels = {}; // likely still returns {}
+
+      return this.customApiBase(headers)
+        .get(computedUrl, {
+          params: {
+            ...preparedRels,
+          },
+          dataTransformer: ({ data }) => {
+            // const result = this.NormalizeRecursive(data)
+            const result = {
+              id: data.id,
+              createdTime: data.createdTime,
+              ...data.fields
+            };
+            return result
+          },
+        })
+      // .then((res) => {
+      //   return res
+      // })
+      // .catch((error) => {
+      //   // CustonMixins.methods.logNetworkError(error)
+      // })
+
     }
 
-    static Store(entity, relationships = [], flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiStore(
-            `${this.baseUrl}${this.entityUrl}`,
-            entity,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
 
-    static Update(entity, relationships = [], flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiUpdate(
-            `${this.baseUrl}${this.entityUrl}`,
-            entity,
-            [...this.parentWithables, ...relationships],
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
-
-    static Delete(entityId, flags = {}, moreHeaders = {}) {
-        return this.customSupabaseApiDelete(
-            `${this.baseUrl}${this.entityUrl}`,
-            entityId,
-            flags,
-            this.mergeHeaders(moreHeaders),
-            this
-        );
-    }
 }

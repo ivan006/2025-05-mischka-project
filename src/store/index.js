@@ -10,6 +10,7 @@ import Header_Singleton from "src/models/orm-api/Header_Singleton";
 import Footer_Singleton from "src/models/orm-api/Footer_Singleton";
 import Menu_Items from "src/models/orm-api/Menu_Items";
 import Social_Menu_Items from "src/models/orm-api/Social_Menu_Items";
+import TestEntity from "src/models/orm-api/TestEntity";
 
 
 
@@ -25,6 +26,7 @@ database.register(Header_Singleton)
 database.register(Footer_Singleton)
 database.register(Menu_Items)
 database.register(Social_Menu_Items)
+database.register(TestEntity)
 
 
 

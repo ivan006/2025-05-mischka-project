@@ -2,18 +2,18 @@
 
     <div>
         <q-card class="q-mb-md">
-            <brandRead :id="id" />
+            <TestEntityRead :id="id" />
         </q-card>
     </div>
 </template>
 
 <script>
-import brandRead from 'src/views/lists/brands/BrandRead.vue'
+import TestEntityRead from 'src/views/lists/test-entity/TestEntityRead.vue'
 
 export default {
-    name: 'Brand-read-controller',
+    name: 'TestEntityRead-controller',
     components: {
-        brandRead,
+      TestEntityRead,
     },
 
     data() {
