@@ -11,7 +11,7 @@ export default configure(function () {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node20",
       },
-      vueRouterMode: "hash",
+      vueRouterMode: "history",
       publicPath: "",
       minify: "esbuild",
       esbuild: {

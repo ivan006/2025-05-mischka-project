@@ -7,11 +7,11 @@ const routes = [
       {
         path: '/',
         component: () => import('src/views/layouts/MainLayout.vue'),
-        redirect: to => { return '/home' },
+        // redirect: to => { return '/home' },
         children: [
           {
-            path: '/home',
-            name: '/home',
+            path: '/',
+            name: '/',
             component: () => import('src/controllers/HomeController.vue'),
             meta: {
               breadcrumbName: 'Home',
