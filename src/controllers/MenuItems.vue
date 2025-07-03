@@ -42,8 +42,6 @@
 
 <script>
 import Menu_Items from 'src/models/orm-api/Menu_Items'
-import {computed, ref} from "vue";
-import {useRoute} from "vue-router";
 
 export default {
   name: 'MenuItems',

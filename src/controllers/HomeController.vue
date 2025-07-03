@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <div class="q-py-xl bg-black">
+    <div class=" bg-black" style="padding-top: 100px; padding-bottom: 100px;">
       <div
         class="container-md "
       >
@@ -60,6 +60,44 @@
             </div>
 
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" bg-white text-black">
+      <div class="row">
+
+        <div
+          class="col-xl-6 col-md-6 col-sm-12 col-xs-12"
+        >
+
+          <!--:style="this.item.fields?.['Contact Image'][0].url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image'][0].url});` : ``"-->
+          <!--<div style="height: 500px;">-->
+
+          <!--</div>-->
+
+          <img
+            :src="this.item.fields?.['Contact Image'][0].url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image'][0].url}` : ''"
+            style="width: 100%; display: block;"
+          >
+
+        </div>
+        <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12  " >
+          <div class="row full-height items-center q-py-lg q-px-xl">
+
+            <div>
+
+              <h1 class=" text-h3 text-bold ">
+
+                {{item.fields?.['Contact Title']}}
+              </h1>
+              <div class=" text-h5 ">
+
+                {{item.fields?.['Contact Email Address']}}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

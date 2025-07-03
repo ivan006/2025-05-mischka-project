@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="this.item.fields?.['Site Background Image'][0].url ? `background-image: url('https://capetownlists.co.za/?url=${this.item.fields?.['Site Background Image'][0].url}');` : ``"
+    :style="this.item.fields?.['Site Background Image'][0].url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Site Background Image'][0].url});` : ``"
     style="
     color: white;
     min-height: 100vh;
@@ -17,7 +17,7 @@
         <!--</q-avatar>-->
 
         <img
-          :src="this.item.fields?.['Logo Image'][0].url"
+          :src="this.item.fields?.['Logo Image'][0].thumbnails.large.url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Logo Image'][0].thumbnails.large.url}` : ''"
           style="height: 200px;"
         >
         <q-toolbar-title>
@@ -49,6 +49,7 @@
     <!--</div>-->
     <!--<div class="q-px-md">-->
     <!--</div>-->
+    <FooterController />
   </div>
 
 </template>
@@ -61,10 +62,12 @@ import VueCookies from 'vue-cookies';
 import MenuItems from 'src/controllers/MenuItems.vue';
 import Menu_Items from "src/models/orm-api/Menu_Items";
 import Header_Singleton from "src/models/orm-api/Header_Singleton";
+import FooterController from "src/controllers/FooterController.vue";
 
 export default {
   name: 'GlobalController',
   components: {
+    FooterController,
     // BreadcrumbsComp,
     MenuItems
   },
