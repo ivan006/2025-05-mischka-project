@@ -8,12 +8,12 @@
         <div class="row q-col-gutter-md">
 
 
-          <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12">
+          <!--<div class="col-xl-1 col-md-1 col-sm-12 col-xs-12">-->
 
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 offset-md-2">
+          <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
             <h1 class="text-center text-h3">
               {{item.fields?.['Hero Title']}}
@@ -53,7 +53,7 @@
             </h1>
 
           </div>
-          <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12 q-px-xl">
             <div class=" text-h5 ">
 
               {{item.fields?.['About Us Text']}}
@@ -83,15 +83,15 @@
 
         </div>
         <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12  " >
-          <div class="row full-height items-center q-py-lg q-px-xl">
+          <div class="row full-height items-center q-py-lg q-px-xl ">
 
-            <div>
+            <div class="">
 
               <h1 class=" text-h3 text-bold ">
 
                 {{item.fields?.['Contact Title']}}
               </h1>
-              <div class=" text-h5 ">
+              <div class=" text-h5 q-pb-xl">
 
                 {{item.fields?.['Contact Email Address']}}
               </div>

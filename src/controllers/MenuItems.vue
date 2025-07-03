@@ -1,43 +1,47 @@
 <template>
 
-  <template v-if="!items.length">
-    <template v-if="loading">
-      <div class="text-center q-pa-md">Loading...</div>
+  <div class="row justify-center" >
+    <!--style="justify-content: right;"-->
+    <template v-if="!items.length">
+      <template v-if="loading">
+        <div class="text-center q-pa-md">Loading...</div>
+      </template>
+      <template v-else>
+        <div class="text-center q-pa-md text-grey-5">None</div>
+      </template>
     </template>
     <template v-else>
-      <div class="text-center q-pa-md text-grey-5">None</div>
-    </template>
-  </template>
-  <template v-else>
-    <template v-for="item in items" :key="item.id">
+      <template v-for="item in items" :key="item.id">
 
-      <!--:tag="true ? 'a' : 'router-link'"-->
-      <!--target="_blank"-->
-      <!--:href="item.id"-->
-      <q-item
-        clickable
-        tag="router-link"
-        @click="clickRow(item)"
-        :active-class="'q-item--highlighted'"
-        class="q-pl-lg text-h5"
-        :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
-      >
-        <!--<q-item-section avatar v-if="props.icon" style="width: 20px;">-->
-        <!--  <q-icon :name="props.icon" />-->
-        <!--</q-item-section>-->
+        <!--:tag="true ? 'a' : 'router-link'"-->
+        <!--target="_blank"-->
+        <!--:href="item.id"-->
+        <q-item
+          clickable
+          tag="router-link"
+          @click="clickRow(item)"
+          :active-class="'q-item--highlighted'"
+          class="q-pl-lg text-h5"
+          :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
+        >
+          <!--<q-item-section avatar v-if="props.icon" style="width: 20px;">-->
+          <!--  <q-icon :name="props.icon" />-->
+          <!--</q-item-section>-->
 
-        <q-item-section>
-          <q-item-label :style="isActive(item) ? 'font-weight: bold;': ''">
-            <!--<template v-if="props.icon">-->
-            <!--  <q-icon  :name="props.icon" size="sm" style="opacity: 50%" />-->
-            <!--</template>-->
-            {{ item.Label }}
-          </q-item-label>
-          <!--<q-item-label v-if="props.caption" caption>{{ props.caption }}</q-item-label>-->
-        </q-item-section>
-      </q-item>
+          <q-item-section>
+            <q-item-label :style="isActive(item) ? 'font-weight: bold;': ''">
+              <!--<template v-if="props.icon">-->
+              <!--  <q-icon  :name="props.icon" size="sm" style="opacity: 50%" />-->
+              <!--</template>-->
+              {{ item.Label }}
+            </q-item-label>
+            <!--<q-item-label v-if="props.caption" caption>{{ props.caption }}</q-item-label>-->
+          </q-item-section>
+        </q-item>
+      </template>
     </template>
-  </template>
+  </div>
+
 </template>
 
 <script>

@@ -2,10 +2,10 @@
   <div class="bg-black">
     <div class="container-md">
 
-      <div class="row  q-py-md items-center">
+      <div class="row justify-between  q-py-md items-center">
 
         <div
-          class="col-xl-4 col-md-4 col-sm-12 col-xs-12"
+          class="col-12 col-md-auto text-center"
         >
 
           <img
@@ -14,7 +14,7 @@
           >
         </div>
         <div
-          class="col-xl-4 col-md-4 col-sm-12 col-xs-12"
+          class="col-12 col-md-auto text-center"
         >
           <div class="text-center">
 
@@ -22,9 +22,9 @@
           </div>
         </div>
         <div
-          class="col-xl-4 col-md-4 col-sm-12 col-xs-12"
+          class="col-12 col-md-auto text-center"
         >
-          <div class="row no-wrap " style="justify-content: right;">
+          <div class="row no-wrap justify-center q-my-lg" >
             <a :href="this.item.fields?.['Facebook Link']" style="height: 16px; width: 16px;" class="q-mx-sm">
               <svg style="fill: rgb(255, 255, 255);" data-v-f03d3c87="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="c-icon c-icon--md" role="presentation"><path data-v-f03d3c87="" d="M6.2965 3.7118v1.9264H5V8h1.2965v7H8.96V8h1.7883s.1669-1.134.2517-2.3702H8.9704V4.0184c0-.2408.2909-.56.5779-.56H11V1H9.0265c-2.7952 0-2.73 2.359-2.73 2.7118Z"></path></svg>
             </a>
