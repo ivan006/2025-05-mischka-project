@@ -120,7 +120,7 @@
         </div>
       </div>
     </template>
-
+    <HomeSEOController />
 
 
   </div>
@@ -128,9 +128,75 @@
 
 <script>
 import Home_Page_Singleton from "src/models/orm-api/Home_Page_Singleton";
+import { createMetaMixin } from 'quasar'
+import HomeSEOController from "src/controllers/HomeSEOController.vue";
+
+
+
 
 export default {
   name: "AboutController.vue",
+  components: {HomeSEOController},
+  mixins: [
+    createMetaMixin(function () {
+      const data = {}
+
+      return {
+        title: this.item.fields?.['Hero Title'],
+        titleTemplate: title => `${title} | ${import.meta.env.VITE_API_SITE_TITLE}`, // prepend site name
+        meta: {
+          description: {
+            name: 'description',
+            content: this.item.fields?.['About Us Text']
+          },
+          ogTitle: {
+            property: 'og:title',
+            content: this.item.fields?.['Hero Title']
+          },
+          ogDescription: {
+            property: 'og:description',
+            content: this.item.fields?.['About Us Text']
+          },
+          ogImage: {
+            property: 'og:image',
+            content: this.item.fields?.['Contact Image'][0].url
+          },
+          ogType: {
+            property: 'og:type',
+            content: 'website'
+          },
+          ogSiteName: {
+            property: 'og:site_name',
+            content: 'By Misch Marketing'
+          },
+          twitterCard: {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          twitterTitle: {
+            name: 'twitter:title',
+            content: this.item.fields?.['Hero Title']
+          },
+          twitterDescription: {
+            name: 'twitter:description',
+            content: this.item.fields?.['About Us Text']
+          },
+          twitterImage: {
+            name: 'twitter:image',
+            content: this.item.fields?.['Contact Image'][0].url
+          },
+          // robots: {
+          //   name: 'robots',
+          //   content: 'noindex, follow'
+          // },
+          keywords: {
+            name: 'keywords',
+            content: 'business marketing, digital marketing, SEO, branding, social media, Misch Marketing'
+          },
+        }
+      }
+    })
+  ],
   data(){
     return {
       loading: true,

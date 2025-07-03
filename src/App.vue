@@ -11,9 +11,52 @@ import VuexORMAxios from '@vuex-orm/plugin-axios'
 import axios from 'axios'
 import { generateRouteLineages } from 'src/store/modules/routeLineages'
 
+import { createMetaMixin } from 'quasar'
+
 export default {
   name: 'App',
+  mixins: [
+    createMetaMixin(function () {
+      const origin = window.location.origin
+      const path = this.$route.fullPath
+      const canonicalUrl = `${origin}${path}`
 
+      return {
+        meta: {
+          ogLocale: {
+            property: 'og:locale',
+            content: 'en_ZA' // Or en_US if you're targeting US audience
+          },
+          ogUrl: {
+            property: 'og:url',
+            content: canonicalUrl // Dynamically resolve if needed
+          },
+          robots: {
+            name: 'robots',
+            content: 'index, follow'
+          },
+          appleMobileWebAppCapable: {
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes'
+          },
+          appleMobileWebAppStatusBarStyle: {
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: 'black-translucent'
+          },
+          themeColor: {
+            name: 'theme-color',
+            content: '#ffffff' // Or match your brand color
+          },
+        },
+        link: {
+          canonical: {
+            rel: 'canonical',
+            href: canonicalUrl
+          }
+        }
+      }
+    })
+  ],
   mounted () {
     const store = useStore()
     const router = useRouter()

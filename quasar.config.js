@@ -75,7 +75,9 @@ export default configure(function () {
       config: {
         brand: {},
       },
-      plugins: [],
+      plugins: [
+        'Meta'
+      ],
     },
 
     animations: [],

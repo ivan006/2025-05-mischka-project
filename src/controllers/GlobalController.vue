@@ -12,7 +12,7 @@
   >
 
 
-    <q-toolbar style="height: 100%" class="q-py-md">
+    <q-toolbar style="height: 100%" class="q-py-md bg-black">
 
       <div class="container-md text-white ">
         <template v-if="loading">
