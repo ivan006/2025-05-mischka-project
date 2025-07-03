@@ -19,7 +19,7 @@ export default {
         this.item.fields?.['Facebook Link'],
         this.item.fields?.['Instagram Link']
       ].filter(Boolean) // Remove null, undefined, and empty strings
-
+      const org = import.meta.env.VITE_API_SITE_TITLE
       return {
         script: {
           structuredData: {
@@ -27,7 +27,7 @@ export default {
             innerHTML: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": import.meta.env.VITE_API_SITE_TITLE,
+              "name": org,
               "url": origin,
               "logo": `${origin}/android-chrome-192x192.png`,
               ...(sameAsLinks.length > 0 && { sameAs: sameAsLinks }) // Add only if links exist

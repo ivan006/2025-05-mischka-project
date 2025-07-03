@@ -139,27 +139,27 @@ export default {
   components: {HomeSEOController},
   mixins: [
     createMetaMixin(function () {
-      const data = {}
+      const org = import.meta.env.VITE_API_SITE_TITLE
 
       return {
         title: this.item.fields?.['Hero Title'],
-        titleTemplate: title => `${title} | ${import.meta.env.VITE_API_SITE_TITLE}`, // prepend site name
+        titleTemplate: title => `${title} | ${org}`, // prepend site name
         meta: {
           description: {
             name: 'description',
-            content: this.item.fields?.['About Us Text']
+            content: this.item.fields?.['About Us Text'] || 'xcccc'
           },
           ogTitle: {
             property: 'og:title',
-            content: this.item.fields?.['Hero Title']
+            content: this.item.fields?.['Hero Title'] || ''
           },
           ogDescription: {
             property: 'og:description',
-            content: this.item.fields?.['About Us Text']
+            content: this.item.fields?.['About Us Text'] || ''
           },
           ogImage: {
             property: 'og:image',
-            content: this.item.fields?.['Contact Image'][0].url
+            content: this.item.fields?.['Contact Image'][0].url || ''
           },
           ogType: {
             property: 'og:type',
@@ -175,24 +175,20 @@ export default {
           },
           twitterTitle: {
             name: 'twitter:title',
-            content: this.item.fields?.['Hero Title']
+            content: this.item.fields?.['Hero Title'] || ''
           },
           twitterDescription: {
             name: 'twitter:description',
-            content: this.item.fields?.['About Us Text']
+            content: this.item.fields?.['About Us Text'] || ''
           },
           twitterImage: {
             name: 'twitter:image',
-            content: this.item.fields?.['Contact Image'][0].url
+            content: this.item.fields?.['Contact Image'][0].url || ''
           },
           // robots: {
           //   name: 'robots',
           //   content: 'noindex, follow'
           // },
-          keywords: {
-            name: 'keywords',
-            content: 'business marketing, digital marketing, SEO, branding, social media, Misch Marketing'
-          },
         }
       }
     })
