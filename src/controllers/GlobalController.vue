@@ -11,43 +11,48 @@
     "
   >
 
+
     <q-toolbar style="height: 100%" class="q-py-md">
 
       <div class="container-md text-white ">
+        <template v-if="loading">
+          <div class="text-center q-pa-xl">Loading...</div>
+        </template>
+        <template v-else>
+          <div class="row justify-between items-center  q-py-md ">
 
-        <div class="row justify-between items-center  q-py-md ">
-
-          <div
-            class="col-12 col-md-auto text-center"
-          >
-
-            <!--<q-btn flat round dense icon="menu" class="q-mr-sm" />-->
-            <!--<q-avatar large>-->
-            <!--  <img :src="this.item.fields?.['Logo Image'][0].url">-->
-            <!--  &lt;!&ndash;<q-icon name="school" size="lg" style="opacity: 50%" />&ndash;&gt;-->
-            <!--</q-avatar>-->
-
-            <img
-              :src="this.item.fields?.['Logo Image'][0].thumbnails.large.url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Logo Image'][0].thumbnails.large.url}` : ''"
-              style="height: 200px;"
+            <div
+              class="col-12 col-md-auto text-center"
             >
-            <!--<q-toolbar-title>-->
-            <!--  &lt;!&ndash;{{ siteTitle }}&ndash;&gt;-->
-            <!--</q-toolbar-title>-->
-          </div>
-          <div
-            class="col-12 col-md-auto q-my-lg text-center"
-          >
 
-            <!--<q-btn flat round dense icon="whatshot" />-->
-            <MenuItems />
+              <!--<q-btn flat round dense icon="menu" class="q-mr-sm" />-->
+              <!--<q-avatar large>-->
+              <!--  <img :src="this.item.fields?.['Logo Image'][0].url">-->
+              <!--  &lt;!&ndash;<q-icon name="school" size="lg" style="opacity: 50%" />&ndash;&gt;-->
+              <!--</q-avatar>-->
 
+              <img
+                :src="this.item.fields?.['Logo Image'][0].thumbnails.large.url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Logo Image'][0].thumbnails.large.url}` : ''"
+                style="height: 200px;"
+              >
+              <!--<q-toolbar-title>-->
+              <!--  &lt;!&ndash;{{ siteTitle }}&ndash;&gt;-->
+              <!--</q-toolbar-title>-->
+            </div>
+            <div
+              class="col-12 col-md-auto q-my-lg text-center"
+            >
+
+              <!--<q-btn flat round dense icon="whatshot" />-->
+              <MenuItems />
+
+            </div>
           </div>
-        </div>
+        </template>
+
       </div>
 
     </q-toolbar>
-
 
 
 
@@ -58,7 +63,7 @@
 
     <q-page-container>
       <!--<pre>{{item}}</pre>-->
-      <div class="q-mt-md ">
+      <div class="q-mt-md " style="min-height: 60vh;">
         <!--<BreadcrumbsComp />-->
         <router-view />
       </div>
