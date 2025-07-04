@@ -22,7 +22,7 @@ const routes = [
           {
             path: '/services',
             name: '/services',
-            component: () => import('src/controllers/ServicesController.vue'),
+            component: () => import('src/controllers/Services_Page_Singleton_Controller.vue'),
             meta: {
               breadcrumbName: 'Services',
               breadcrumbParentName: '',
