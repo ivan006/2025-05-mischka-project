@@ -16,10 +16,12 @@
         <!--:tag="true ? 'a' : 'router-link'"-->
         <!--target="_blank"-->
         <!--:href="item.id"-->
+
+
+        <!--@click="clickRow(item)"-->
         <q-item
           clickable
-          tag="router-link"
-          @click="clickRow(item)"
+          :to="item.URL"
           :active-class="'q-item--highlighted'"
           class="q-pl-lg text-h5"
           :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
@@ -90,17 +92,17 @@ export default {
       return item.URL === this.activeRoute;
     },
 
-    clickRow(item) {
-
-      this.$router.push({
-        path: item.URL
-        // name: '/lists/brands/:rId/:rName',
-        // params: {
-        //   rId: pVal,
-        //   rName: item.name,
-        // },
-      })
-    },
+    // clickRow(item) {
+    //
+    //   this.$router.push({
+    //     path: item.URL
+    //     // name: '/lists/brands/:rId/:rName',
+    //     // params: {
+    //     //   rId: pVal,
+    //     //   rName: item.name,
+    //     // },
+    //   })
+    // },
     colClasses(baseWidth = 12) {
       baseWidth = +baseWidth
 
