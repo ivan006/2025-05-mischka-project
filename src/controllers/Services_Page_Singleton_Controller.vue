@@ -46,46 +46,47 @@
         </div>
       </div>
 
-      <div class=" bg-white text-black">
-        <div class="row">
 
-          <div
-            class="col-xl-6 col-md-6 col-sm-12 col-xs-12"
-          >
+      <div class="q-py-xl">
 
-            <!--:style="this.item.fields?.['Contact Image']?.[0]?.url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image']?.[0]?.url});` : ``"-->
-            <!--<div style="height: 500px;">-->
+        <div
+          class="container-md"
+        >
+          <div class="row q-col-gutter-md">
+
+
+            <!--<div class="col-xl-1 col-md-1 col-sm-12 col-xs-12">-->
+
 
             <!--</div>-->
 
-            <img
-              :src="this.item.fields?.['Contact Image']?.[0]?.url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image']?.[0]?.url}` : ''"
-              style="width: 100%; display: block;"
-            >
+            <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 offset-md-2 q-px-xl">
 
-          </div>
-          <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12  " >
-            <div class="row full-height items-center q-py-lg q-px-xl ">
-
-              <div class="">
-
-
-
-                <h2 class="gt-sm text-h3 text-bold ">
-
-                  {{item.fields?.['Contact Title']}}
+              <div class="gt-sm">
+                <h2 class="text-center text-h3 text-bold">
+                  {{item.fields?.['Description']}}
                 </h2>
-                <h2 class="lt-md text-h4 text-bold ">
-
-                  {{item.fields?.['Contact Title']}}
-                </h2>
-                <div class=" text-h5 q-pb-xl">
-
-                  {{item.fields?.['Contact Email Address']}}
-                </div>
               </div>
-            </div>
+              <div class="lt-md">
+                <h2 class="text-center text-h4 text-bold">
+                  {{item.fields?.['Description']}}
+                </h2>
+              </div>
 
+
+              <div class="text-center">
+
+                <q-btn
+                  size="xl"
+                  class="text-black"
+                  color="white"
+                  :href="item.fields?.['Button Link']"
+                >
+                  {{item.fields?.['Button Text']}}
+                </q-btn>
+              </div>
+              <!--<pre>{{item}}</pre>-->
+            </div>
           </div>
         </div>
       </div>
