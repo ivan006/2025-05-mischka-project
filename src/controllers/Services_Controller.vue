@@ -1,36 +1,78 @@
 <template>
-  <div class="row justify-center" >
-    <template v-if="!items.length">
-      <template v-if="loading">
-        <div class="text-center q-pa-md">Loading...</div>
-      </template>
-      <template v-else>
-        <div class="text-center q-pa-md text-grey-5">None</div>
-      </template>
+  <template v-if="!items.length">
+    <template v-if="loading">
+      <div class="text-center q-pa-md">Loading...</div>
     </template>
     <template v-else>
-      <template v-for="item in items" :key="item.id">
-        <q-item
-          clickable
-          :to="item.URL"
-          :active-class="'q-item--highlighted'"
-          class="q-pl-lg text-h5"
-          :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
-        >
-          <q-item-section>
-            <q-item-label :style="isActive(item) ? 'font-weight: bold;': ''">
-              {{ item.Label }}
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-      </template>
+      <div class="text-center q-pa-md text-grey-5">None</div>
     </template>
-  </div>
+  </template>
+  <template v-else>
+
+    <div class="row">
+      <!--<div class="row justify-center" >-->
+
+      <template v-for="item in items" :key="item.id">
+
+        <!--<q-avatar>-->
+        <!--  <img :src="item">-->
+        <!--</q-avatar>-->
+        <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="q-py-lg ">
+
+            <div class="row">
+
+              <div class="col-xl-4 col-md-4 col-sm-12 col-xs-12 q-px-lg">
+                <div
+
+                >
+                  <img
+                    :src="item?.['Image']?.[0]?.url ? `https://capetownlists.co.za/?url=${item?.['Image']?.[0]?.thumbnails?.large?.url}` : ''"
+                    style="width: 100%; display: block; border-radius: 1000px;"
+                  >
+                  <!--<img src="https://cdn.quasar.dev/img/avatar.png">-->
+                </div>
+              </div>
+              <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 q-px-lg ">
+                <div class="column justify-center full-height">
+
+                  <div class="gt-sm">
+                    <h2 class="text-h5 q-mt-none">
+                      {{item["Title"]}}
+                    </h2>
+                  </div>
+                  <div class="lt-md">
+                    <h2 class="text-h6">
+                      {{item["Title"]}}
+                    </h2>
+                  </div>
+
+                  <div class="text-body1">
+                    {{item["Description"]}}
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+
+            <!--<pre>-->
+            <!--  {{item}}-->
+            <!--</pre>-->
+          </div>
+        </div>
+      </template>
+
+    </div>
+
+  </template>
+
 
 </template>
 
 <script>
-import Menu_Items from 'src/models/orm-api/Menu_Items'
+import Services from 'src/models/orm-api/Services'
 
 export default {
   name: 'Services_Controller',
@@ -60,7 +102,7 @@ export default {
   },
   computed: {
     superTableModel() {
-      return Menu_Items
+      return Services
     },
     filterValsComp() {
       const result = {

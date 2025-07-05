@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="this.item.fields?.['Site Background Image'][0].url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Site Background Image'][0].url});` : ``"
+    :style="this.item.fields?.['Site Background Image']?.[0]?.url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Site Background Image']?.[0]?.url});` : ``"
     style="
     color: white;
     min-height: 100vh;
@@ -27,7 +27,7 @@
 
               <!--<q-btn flat round dense icon="menu" class="q-mr-sm" />-->
               <!--<q-avatar large>-->
-              <!--  <img :src="this.item.fields?.['Logo Image'][0].url">-->
+              <!--  <img :src="this.item.fields?.['Logo Image']?.[0]?.url">-->
               <!--  &lt;!&ndash;<q-icon name="school" size="lg" style="opacity: 50%" />&ndash;&gt;-->
               <!--</q-avatar>-->
 
@@ -56,8 +56,8 @@
 
 
 
-    <!--<img v-if="item.fields" :src="`https://capetownlists.co.za/?url=${item.fields['Site Background Image'][0].url}`" alt="">-->
-    <!--<img v-if="item.fields" :src="`${item.fields['Site Background Image'][0].url}`" alt="">-->
+    <!--<img v-if="item.fields" :src="`https://capetownlists.co.za/?url=${item.fields['Site Background Image']?.[0]?.url}`" alt="">-->
+    <!--<img v-if="item.fields" :src="`${item.fields['Site Background Image']?.[0]?.url}`" alt="">-->
 
 
 
@@ -112,7 +112,7 @@ export default {
       return Header_Singleton
     },
     bgUrl() {
-      const result = this.item.fields?.['Site Background Image'][0].url
+      const result = this.item.fields?.['Site Background Image']?.[0]?.url
       return result
     },
   },

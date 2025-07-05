@@ -20,31 +20,17 @@
 
             <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
-              <h1 class="gt-sm text-center text-h3">
-                {{item.fields?.['Hero Title']}}
-              </h1>
-              <h1 class="lt-md text-center text-h4">
-                {{item.fields?.['Hero Title']}}
-              </h1>
-              <h2 class="gt-sm text-center text-h1 text-bold">
-
-                {{item.fields?.['Hero Subtitle']}}
-              </h2>
-              <h2 class="lt-md text-center text-h2 text-bold">
-
-                {{item.fields?.['Hero Subtitle']}}
-              </h2>
-              <div class="text-center">
-
-                <q-btn
-                  size="xl"
-                  class="text-black"
-                  color="white"
-                  :href="item.fields?.['Hero CTA URL']"
-                >
-                  {{item.fields?.['Hero CTA Text']}}
-                </q-btn>
+              <div class="gt-sm">
+                <h1 class="text-center text-h1 text-bold">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
               </div>
+              <div class="lt-md">
+                <h1 class="lt-md text-center text-h2 text-bold">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
+              </div>
+
               <!--<pre>{{item}}</pre>-->
             </div>
           </div>
@@ -56,23 +42,7 @@
           class="container-md "
         >
 
-          <div class="row">
-
-            <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12">
-
-              <h1 class="text-center text-h3 text-bold">
-                About Us
-              </h1>
-
-            </div>
-            <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12 q-px-xl">
-              <div class=" text-h5 ">
-
-                {{item.fields?.['About Us Text']}}
-              </div>
-
-            </div>
-          </div>
+          <Services_Controller />
         </div>
       </div>
 
@@ -83,13 +53,13 @@
             class="col-xl-6 col-md-6 col-sm-12 col-xs-12"
           >
 
-            <!--:style="this.item.fields?.['Contact Image'][0].url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image'][0].url});` : ``"-->
+            <!--:style="this.item.fields?.['Contact Image']?.[0]?.url ? `background-image: url(https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image']?.[0]?.url});` : ``"-->
             <!--<div style="height: 500px;">-->
 
             <!--</div>-->
 
             <img
-              :src="this.item.fields?.['Contact Image'][0].url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image'][0].url}` : ''"
+              :src="this.item.fields?.['Contact Image']?.[0]?.url ? `https://capetownlists.co.za/?url=${this.item.fields?.['Contact Image']?.[0]?.url}` : ''"
               style="width: 100%; display: block;"
             >
 
@@ -129,10 +99,12 @@
 <script>
 import Services_Page_Singleton from "src/models/orm-api/Services_Page_Singleton";
 import { createMetaMixin } from 'quasar'
+import Services_Controller from "src/controllers/Services_Controller.vue";
 
 export default {
   name: "Services_Page_Singleton_Controller",
   components: {
+    Services_Controller
   },
   mixins: [
     createMetaMixin(function () {
@@ -156,7 +128,7 @@ export default {
           },
           ogImage: {
             property: 'og:image',
-            content: this.item.fields?.['Contact Image'][0].url || ''
+            content: this.item.fields?.['Contact Image']?.[0]?.url || ''
           },
           ogType: {
             property: 'og:type',
@@ -180,7 +152,7 @@ export default {
           },
           twitterImage: {
             name: 'twitter:image',
-            content: this.item.fields?.['Contact Image'][0].url || ''
+            content: this.item.fields?.['Contact Image']?.[0]?.url || ''
           },
           // robots: {
           //   name: 'robots',
