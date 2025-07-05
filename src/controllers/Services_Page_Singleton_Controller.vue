@@ -107,9 +107,13 @@ export default {
   components: {
     Services_Controller
   },
+
   mixins: [
     createMetaMixin(function () {
       const org = import.meta.env.VITE_API_SITE_TITLE
+      const origin = window.location.origin
+      const path = this.$route.fullPath
+      const canonicalUrl = `${origin}${path}`
 
       return {
         title: this.item.fields?.['Hero Title'],
@@ -117,48 +121,20 @@ export default {
         meta: {
           description: {
             name: 'description',
-            content: this.item.fields?.['About Us Text'] || 'xcccc'
+            content: this.item.fields?.['Description'] || ''
           },
-          ogTitle: {
-            property: 'og:title',
-            content: this.item.fields?.['Hero Title'] || ''
-          },
-          ogDescription: {
-            property: 'og:description',
-            content: this.item.fields?.['About Us Text'] || ''
-          },
-          ogImage: {
-            property: 'og:image',
-            content: this.item.fields?.['Contact Image']?.[0]?.url || ''
-          },
-          ogType: {
-            property: 'og:type',
-            content: 'website'
-          },
-          ogSiteName: {
-            property: 'og:site_name',
-            content: 'By Misch Marketing'
-          },
-          twitterCard: {
-            name: 'twitter:card',
-            content: 'summary_large_image'
-          },
-          twitterTitle: {
-            name: 'twitter:title',
-            content: this.item.fields?.['Hero Title'] || ''
-          },
-          twitterDescription: {
-            name: 'twitter:description',
-            content: this.item.fields?.['About Us Text'] || ''
-          },
-          twitterImage: {
-            name: 'twitter:image',
-            content: this.item.fields?.['Contact Image']?.[0]?.url || ''
-          },
-          // robots: {
-          //   name: 'robots',
-          //   content: 'noindex, follow'
-          // },
+        },
+        script: {
+          structuredData: {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": this.item.fields?.['Hero Title'] || '',
+              "url": canonicalUrl,
+              "description": this.item.fields?.['Description'] || ``,
+            })
+          }
         }
       }
     })
