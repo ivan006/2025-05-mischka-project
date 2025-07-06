@@ -175,7 +175,7 @@ export default {
           },
           ogSiteName: {
             property: 'og:site_name',
-            content: 'By Misch Marketing'
+            content: this.item.fields?.['Hero Title']
           },
           twitterCard: {
             name: 'twitter:card',
