@@ -105,7 +105,7 @@
           <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12  " >
             <div class="row full-height items-center q-py-lg q-px-xl ">
 
-              <div class="">
+              <div class=""  id="contact">
 
 
 
@@ -113,7 +113,7 @@
 
                   {{item.fields?.['Contact Title']}}
                 </h2>
-                <h2 class="lt-md text-h4 text-bold ">
+                <h2 class="lt-md text-h4 text-bold " >
 
                   {{item.fields?.['Contact Title']}}
                 </h2>
@@ -238,6 +238,28 @@ export default {
   },
   mounted(){
     this.fetchData();
+
+
+
+    if (window.location.hash) {
+      const scrollToHash = () => {
+        const el = document.querySelector(window.location.hash)
+        if (el) {
+          // Get the element's position relative to the document
+          const top = el.getBoundingClientRect().top + window.scrollY
+
+          // Scroll so that the element is at the very top
+          window.scrollTo({
+            top: top,
+            behavior: 'smooth'
+          })
+        } else {
+          // Retry until the element exists
+          setTimeout(scrollToHash, 200)
+        }
+      }
+      scrollToHash()
+    }
   }
 }
 </script>

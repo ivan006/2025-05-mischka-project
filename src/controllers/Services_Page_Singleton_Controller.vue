@@ -80,7 +80,7 @@
                   size="xl"
                   class="text-black"
                   color="white"
-                  :href="item.fields?.['Button Link']"
+                  :to="item.fields?.['Button Link']"
                 >
                   {{item.fields?.['Button Text']}}
                 </q-btn>

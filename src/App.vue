@@ -20,7 +20,7 @@ export default {
       const origin = window.location.origin
       const path = this.$route.fullPath
       const canonicalUrl = `${origin}${path}`
-
+      const baseUrl = import.meta.env.VITE_API_BACKEND_URL
       return {
         meta: {
           ogLocale: {
@@ -52,7 +52,15 @@ export default {
           canonical: {
             rel: 'canonical',
             href: canonicalUrl
-          }
+          },
+          preconnect: {
+            rel: 'preconnect',
+            href: baseUrl
+          },
+          dnsPrefetch: {
+            rel: 'dns-prefetch',
+            href: baseUrl
+          },
         }
       }
     })
@@ -73,6 +81,11 @@ export default {
     } else {
       console.error('Router is not properly initialized or routes are not accessible.')
     }
+
+
+
+
+
   }
 }
 </script>
