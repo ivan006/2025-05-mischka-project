@@ -36,16 +36,10 @@
               <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 q-px-lg ">
                 <div class="column justify-center full-height">
 
-                  <div class="gt-sm">
-                    <h2 class="text-h5 q-mt-none">
-                      {{item["Title"]}}
-                    </h2>
-                  </div>
-                  <div class="lt-md">
-                    <h2 class="text-h6">
-                      {{item["Title"]}}
-                    </h2>
-                  </div>
+
+                  <h2 class="text-h5 q-mt-none">
+                    {{item["Title"]}}
+                  </h2>
 
                   <div class="text-body1">
                     {{item["Description"]}}

@@ -53,3 +53,14 @@ $lg-breakpoint: 1920px;
     max-width: 1440px;
   }
 }
+
+
+:root {
+  font-size: 16px; /* Default */
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 12px; /* Mobile font size */
+  }
+}

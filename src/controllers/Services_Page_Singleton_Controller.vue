@@ -20,16 +20,15 @@
 
             <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
-              <div class="gt-sm">
-                <h1 class="text-center text-h1 text-bold">
-                  {{item.fields?.['Hero Title']}}
-                </h1>
-              </div>
-              <div class="lt-md">
-                <h1 class="lt-md text-center text-h2 text-bold">
-                  {{item.fields?.['Hero Title']}}
-                </h1>
-              </div>
+
+              <h1 class="text-center text-h1 text-bold">
+                {{item.fields?.['Hero Title']}}
+              </h1>
+
+              <!--<div class="gt-sm">-->
+              <!--</div>-->
+              <!--<div class="lt-md">-->
+              <!--</div>-->
 
               <!--<pre>{{item}}</pre>-->
             </div>
@@ -62,16 +61,10 @@
 
             <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 offset-md-2 q-px-xl">
 
-              <div class="gt-sm">
-                <h2 class="text-center text-h3 text-bold">
-                  {{item.fields?.['Description']}}
-                </h2>
-              </div>
-              <div class="lt-md">
-                <h2 class="text-center text-h4 text-bold">
-                  {{item.fields?.['Description']}}
-                </h2>
-              </div>
+
+              <h2 class="text-center text-h3 text-bold">
+                {{item.fields?.['Description']}}
+              </h2>
 
 
               <div class="text-center">

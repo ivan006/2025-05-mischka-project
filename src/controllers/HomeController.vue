@@ -20,27 +20,15 @@
 
             <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
-              <div class="gt-sm">
-                <h1 class="text-center text-h3">
-                  {{item.fields?.['Hero Title']}}
-                </h1>
-              </div>
-              <div class="lt-md">
-                <h1 class="text-center text-h4">
-                  {{item.fields?.['Hero Title']}}
-                </h1>
-              </div>
 
-              <div class="gt-sm">
-                <h2 class="text-center text-h1 text-bold">
-                  {{item.fields?.['Hero Subtitle']}}
-                </h2>
-              </div>
-              <div   class="lt-md">
-                <h2 class="lt-md text-center text-h2 text-bold">
-                  {{item.fields?.['Hero Subtitle']}}
-                </h2>
-              </div>
+              <h1 class="text-center text-h3">
+                {{item.fields?.['Hero Title']}}
+              </h1>
+
+
+              <h2 class="text-center text-h1 text-bold">
+                {{item.fields?.['Hero Subtitle']}}
+              </h2>
 
               <div class="text-center">
 
@@ -109,14 +97,11 @@
 
 
 
-                <h2 class="gt-sm text-h3 text-bold ">
+                <h2 class="text-h3 text-bold ">
 
                   {{item.fields?.['Contact Title']}}
                 </h2>
-                <h2 class="lt-md text-h4 text-bold " >
 
-                  {{item.fields?.['Contact Title']}}
-                </h2>
                 <div class=" text-h5 q-pb-xl">
 
                   {{item.fields?.['Contact Email Address']}}
