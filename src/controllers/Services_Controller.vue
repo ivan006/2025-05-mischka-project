@@ -38,11 +38,11 @@
 
                   <div class="lt-md q-mt-lg"></div>
 
-                  <h2 class="text-h5 text-bold q-mt-none">
+                  <h2 class="text-h4 text-bold q-mt-none">
                     {{item["Title"]}}
                   </h2>
 
-                  <div class="text-body1">
+                  <div class="text-body3">
                     {{item["Description"]}}
                   </div>
                 </div>
