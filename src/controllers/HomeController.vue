@@ -21,19 +21,33 @@
             <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
 
-              <h1 class="text-center text-h3">
-                {{item.fields?.['Hero Title']}}
-              </h1>
+              <div class="gt-sm">
+                <h1 class="text-center text-h3">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
+              </div>
+              <div class="lt-md">
+                <h1 class="text-center text-h4">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
+              </div>
 
 
-              <h2 class="text-center text-h1 text-bold">
-                {{item.fields?.['Hero Subtitle']}}
-              </h2>
+              <div class="gt-sm">
+                <h2 class="text-center text-h1 text-bold">
+                  {{item.fields?.['Hero Subtitle']}}
+                </h2>
+              </div>
+              <div class="lt-md">
+                <h2 class="text-center text-h2 text-bold">
+                  {{item.fields?.['Hero Subtitle']}}
+                </h2>
+              </div>
 
               <div class="text-center">
 
                 <q-btn
-                  size="xl"
+                  size="lg"
                   class="text-black"
                   color="white"
                   :href="item.fields?.['Hero CTA URL']"

@@ -21,9 +21,16 @@
             <div class="col-xl-10 col-md-10 col-sm-12 col-xs-12 offset-md-1 q-px-xl">
 
 
-              <h1 class="text-center text-h1 text-bold">
-                {{item.fields?.['Hero Title']}}
-              </h1>
+              <div class="gt-sm">
+                <h1 class="text-center text-h1 text-bold">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
+              </div>
+              <div class="lt-md">
+                <h1 class="text-center text-h2 text-bold">
+                  {{item.fields?.['Hero Title']}}
+                </h1>
+              </div>
 
               <!--<div class="gt-sm">-->
               <!--</div>-->
