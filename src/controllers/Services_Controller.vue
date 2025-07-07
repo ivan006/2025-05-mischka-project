@@ -18,7 +18,7 @@
         <!--  <img :src="item">-->
         <!--</q-avatar>-->
         <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12">
-          <div class="q-py-lg ">
+          <div class="q-py-lg q-px-lg">
 
             <div class="row">
 
@@ -36,8 +36,9 @@
               <div class="col-xl-8 col-md-8 col-sm-12 col-xs-12 q-px-lg ">
                 <div class="column justify-center full-height">
 
+                  <div class="lt-md q-mt-lg"></div>
 
-                  <h2 class="text-h5 q-mt-none">
+                  <h2 class="text-h5 text-bold q-mt-none">
                     {{item["Title"]}}
                   </h2>
 
