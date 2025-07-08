@@ -142,7 +142,7 @@ import HomeSEOController from "src/controllers/HomeSEOController.vue";
 
 
 export default {
-  name: "AboutController.vue",
+  name: "HomeController.vue",
   components: {HomeSEOController},
   mixins: [
     createMetaMixin(function () {
@@ -227,6 +227,7 @@ export default {
           { flags: {}, moreHeaders: {}, rels: [] }
         )
         .then((response) => {
+          console.log(1111)
           this.item = response.response.data
           this.loading = false
         })
@@ -240,23 +241,32 @@ export default {
 
 
 
-    if (window.location.hash) {
-      const scrollToHash = () => {
-        const el = document.querySelector(window.location.hash)
-        if (el) {
-          // Get the element's position relative to the document
-          const top = el.getBoundingClientRect().top + window.scrollY
 
-          // Scroll so that the element is at the very top
+    if (window.location.hash) {
+      const hash = window.location.hash; // keep the full hash intact
+
+      // Test if hash is safe to use in querySelector
+      try {
+        document.querySelector(hash); // test if selector is valid
+      } catch (e) {
+        console.warn(`Invalid selector: ${hash} - skipping scroll`);
+        return; // skip scrolling
+      }
+
+      const scrollToHash = () => {
+        const el = document.querySelector(hash); // use raw hash
+
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY
           window.scrollTo({
             top: top,
             behavior: 'smooth'
           })
         } else {
-          // Retry until the element exists
           setTimeout(scrollToHash, 200)
         }
       }
+
       scrollToHash()
     }
   }
