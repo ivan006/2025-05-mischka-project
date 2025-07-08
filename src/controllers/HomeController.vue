@@ -227,7 +227,6 @@ export default {
           { flags: {}, moreHeaders: {}, rels: [] }
         )
         .then((response) => {
-          console.log(1111)
           this.item = response.response.data
           this.loading = false
         })
