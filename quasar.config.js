@@ -2,7 +2,7 @@ import { configure } from "quasar/wrappers";
 
 export default configure(function () {
   return {
-    boot: ["qcalendar", "store", "vuex-orm-axios"],
+    boot: ['quasar-but-cached-support',"qcalendar", "store", "vuex-orm-axios"],
     css: ["app.scss"],
     extras: ["roboto-font", "material-icons"],
 
@@ -11,9 +11,10 @@ export default configure(function () {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node20",
       },
-      // vueRouterMode: "hash",
-      vueRouterMode: "history",
-      publicPath: "",
+      vueRouterMode: "hash",
+      // vueRouterMode: "history",
+      publicPath: '/cacher/spa/',
+      
       minify: "esbuild",
       esbuild: {
         target: "esnext",
