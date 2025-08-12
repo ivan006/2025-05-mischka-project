@@ -13,7 +13,7 @@ export default configure(function () {
       },
       vueRouterMode: "hash",
       // vueRouterMode: "history",
-      publicPath: '/cacher/spa/',
+      publicPath: '/spa/',
       
       minify: "esbuild",
       esbuild: {
