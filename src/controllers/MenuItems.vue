@@ -19,11 +19,9 @@
 
 
         <!--@click="clickRow(item)"-->
-          <!-- :to="{ path: item.URL }" -->
-      
-        <QuasarButCachedLink
+        <q-item
           clickable
-          :smart-to="item.URL"
+          :to="item.URL"
           :active-class="'q-item--highlighted'"
           class="q-pl-lg text-h5"
           :style="isActive(item) ? 'border-bottom: white solid 5px;' : 'border-bottom: rgba(0,0,0,0) solid 5px;'"
@@ -41,7 +39,7 @@
             </q-item-label>
             <!--<q-item-label v-if="props.caption" caption>{{ props.caption }}</q-item-label>-->
           </q-item-section>
-        </QuasarButCachedLink>
+        </q-item>
       </template>
     </template>
   </div>
@@ -50,11 +48,11 @@
 
 <script>
 import Menu_Items from 'src/models/orm-api/Menu_Items'
-import QuasarButCachedLink from "src/controllers/QuasarButCachedLink.vue";
 
 export default {
   name: 'MenuItems',
-  components: {QuasarButCachedLink},
+  components: {
+  },
 
   props: {
     fetchFlags: {
