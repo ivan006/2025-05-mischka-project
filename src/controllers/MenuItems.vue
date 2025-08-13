@@ -89,8 +89,7 @@ export default {
   methods: {
 
     isActive(item) {
-      const normalize = (url) => url.replace(/\/+$/, ''); // strip trailing /
-      return normalize(item.URL) === normalize(this.activeRoute);
+      return item.URL === this.activeRoute;
     },
 
     // clickRow(item) {
